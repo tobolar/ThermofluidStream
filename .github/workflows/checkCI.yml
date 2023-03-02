@@ -1,0 +1,33 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  html_documentation_checks:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 5
+      - name: Setup python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install python packages
+        run: |
+          pip install --user pytidylib
+          pip install --user futures
+      - name: Build html tidy
+        run: |
+          git clone --branch 5.8.0 --depth=1 https://github.com/htacg/tidy-html5.git
+          pushd tidy-html5
+          cmake .
+          make
+          sudo make install
+          popd
+          sudo ldconfig
+      - name: Tidy html
+        run: python ./.CI/check_html.py tidyHTML ./
+      - name: Check tags
+        run: python ./.CI/check_html.py checkTags ./
