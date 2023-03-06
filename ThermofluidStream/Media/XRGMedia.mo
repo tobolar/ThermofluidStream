@@ -297,7 +297,7 @@ package XRGMedia "A medium property library"
     end Helmholtz_pT;
 
     annotation(Documentation(revisions="<html>
-<p><img width=250 src=\"modelica:/ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
+<p><img width=\"250\" src=\"modelica://ThermofluidStream/Resources/XRG_Media/XRG_Logo 2015_4c.png\"/></p>
 <p>Copyright (C) 2007-2021, XRG Simulation GmbH</p>
 </html>"));
   end Common;
