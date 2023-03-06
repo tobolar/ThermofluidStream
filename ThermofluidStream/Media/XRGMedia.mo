@@ -9267,14 +9267,14 @@ Example:
         error := 1;
       end if;
 
-      annotation (Documentation(info="<HTML>
+      annotation (Documentation(info="<html>
 <p> For the calcualtion of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
 when on the other side of a phase boundary)
 </p>
-</HTML>"));
+</html>"));
     end dtofpsOnePhase;
 
     function f_NH3
@@ -9303,7 +9303,6 @@ when on the other side of a phase boundary)
       f.d := d;
       f.T := T;
       f.R := NH3Data.R;
-
 
     end f_NH3;
 
@@ -16212,14 +16211,14 @@ Example:
         error := 1;
       end if;
 
-      annotation (Documentation(info="<HTML>
+      annotation (Documentation(info="<html>
 <p> For the calcualtion of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
 so e.g. the values in the downstream connector are very good guesses. Giving these as
 starting values for the iteration should always converge quickly. (Possible exception:
 when on the other side of a phase boundary)
 </p>
-</HTML>"));
+</html>"));
     end dtofpsOnePhase;
 
     function f_CO2
@@ -23261,11 +23260,19 @@ Please note, that the function can also be called in the two-phase region, but t
     algorithm
       h_is := specificEnthalpy_psX(p_downstream, specificEntropy(refState), reference_X);
       annotation (Documentation(info="<html>
-<p> This function calculates the specific enthalpy of R1234yf for an isentropic pressure change from refState.p to p_downstream (e.g., use setState_phX function for input of refState).
+<p>
+This function calculates the specific enthalpy of R1234yf for an isentropic
+pressure change from refState.p to p_downstream (e.g., use setState_phX
+function for input of refState).
 </p>
-<p> The function can be used for instance to calculate an isentropic efficiency of a compressor or calculate the power consumption (obtained from the isentropic enthalpy) for a given efficiency.</p>
+<p>
+The function can be used for instance to calculate an isentropic efficiency 
+of a compressor or calculate the power consumption (obtained from the 
+isentropic enthalpy) for a given efficiency.
+</p>
 <p>
 Example:
+</p>
 <blockquote><pre>
   Medium.AbsolutePressure p_downstream=10e5;
   Medium.SpecificEnthalpy h_downstream=3.8e5;
@@ -30823,7 +30830,7 @@ the fundamental equation of state of Lemmon (2006) and the Maxwell criteria.
         error := 1;
       end if;
 
-      annotation (Documentation(info="<HTML>
+      annotation (Documentation(info="<html>
 <p>
 For the calcualtion of density and temperature from pressure and specific
 entropy, there is always a fairly good starting guess available form the adjacent CV,
@@ -30831,7 +30838,7 @@ so e.g. the values in the downstream connector are very good guesses. Giving the
 starting values for the iteration should always converge quickly. (Possible exception:
 when on the other side of a phase boundary)
 </p>
-</HTML>"));
+</html>"));
     end dtofpsOnePhase;
 
     function f_R245fa
