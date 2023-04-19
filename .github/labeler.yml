@@ -1,0 +1,17 @@
+p::Examples
+- all: ['ThermofluidStream/ThermofluidStream/Examples/**/*']
+
+p::HeatExchangers:
+- all: ['ThermofluidStream/ThermofluidStream/HeatExchangers/**/*']
+
+p::Interfaces
+- all: ['ThermofluidStream/ThermofluidStream/Interfaces/**/*']
+
+p::Media
+- all: ['ThermofluidStream/ThermofluidStream/Media/**/*']
+
+p::Processes
+- all: ['ThermofluidStream/ThermofluidStream/Processes/**/*']
+
+CI
+- all: ['.CI/**/*', '.github/**/*']
