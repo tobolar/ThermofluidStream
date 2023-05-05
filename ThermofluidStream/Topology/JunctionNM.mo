@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model JunctionNM "N to M splitter"
+model JunctionNM "Transfer N inlets into M outlets"
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
