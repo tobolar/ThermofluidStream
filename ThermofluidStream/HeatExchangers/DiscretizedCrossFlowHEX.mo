@@ -25,6 +25,11 @@ model DiscretizedCrossFlowHEX "Discretized heat exchanger for single- or two-pha
         rotation=180,
         origin={50,-60})));
 
+  Topology.JunctionN loopThermalElementB[nCells - 1](
+    redeclare package Medium = MediumB, each N=1) annotation (Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=180,
+        origin={0,80})));
 initial equation
   if initializeMassFlow then
     inletB.m_flow = m_flow_0_B;
@@ -39,9 +44,12 @@ equation
   //Connecting equations (to interconnect pipes)
   //Fluid Side B
   connect(inletB, thermalElementB[1].inlet) annotation (Line(points={{-100,60},{-10,60}}, color={28,108,200}));
-  for i in 1:nCells - 1 loop
-    connect(thermalElementB[i].outlet, thermalElementB[i + 1].inlet);
-  end for;
+  connect(thermalElementB[1:nCells-1].outlet, loopThermalElementB[1:nCells-1].inlets[1]) annotation (Line(
+        points={{10,60},{30,60},{30,80},{10,80}},
+        color={28,108,200}));
+  connect(thermalElementB[2:nCells].inlet, loopThermalElementB[1:nCells-1].outlet) annotation (Line(
+        points={{-10,60},{-30,60},{-30,80},{-10,80}},
+        color={28,108,200}));
   connect(thermalElementB[nCells].outlet, outletB) annotation (Line(points={{10,60},{100,60}}, color={28,108,200}));
   connect(thermalElementB.heatPort, thermalConductor.port_b) annotation (Line(points={{0,50},{0,14},{-1.77636e-15,14},{-1.77636e-15,10},{0,10}},   color={191,0,0}));
   connect(thermalElementA.heatPort, thermalConductor.port_a) annotation (Line(points={{0,-50},{0,-42},{0,-42},{0,-10},{0,-10}},   color={191,0,0}));
