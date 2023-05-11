@@ -1,5 +1,5 @@
 within ThermofluidStream.Topology;
-model SplitterT2 "Splits a flow into two subflows"
+model SplitterT2 "Splits a flow into two subflows "
 
   replaceable package Medium = Media.myMedia.Interfaces.PartialMedium
     "Medium model" annotation (choicesAllMatching=true, Documentation(info="<html>
