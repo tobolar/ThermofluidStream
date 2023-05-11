@@ -2,7 +2,7 @@
 #   all: all changed files must match the list
 #   any: any of changed files match the list
 
-CI
+CI:
 - any: ['.CI/**/*']
 - any: ['.github/**/*']
 
