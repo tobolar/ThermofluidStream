@@ -7,46 +7,46 @@ CI:
 - any: ['.github/**/*']
 
 p::Boundaries:
-- all: ['ThermofluidStream/ThermofluidStream/Boundaries/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/Boundaries/**/*.mo']
+- all: ['ThermofluidStream/Boundaries/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Boundaries/**/*.mo']
 
 p::Examples:
-- all: ['ThermofluidStream/ThermofluidStream/Examples/**/*.mo']
+- all: ['ThermofluidStream/Examples/**/*.mo']
 
 p::FlowControl:
-- all: ['ThermofluidStream/ThermofluidStream/FlowControl/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/FlowControl/**/*.mo']
+- all: ['ThermofluidStream/FlowControl/**/*.mo']
+- all: ['ThermofluidStream/Undirected/FlowControl/**/*.mo']
 
 p::HeatExchangers:
-- all: ['ThermofluidStream/ThermofluidStream/HeatExchangers/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/HeatExchangers/**/*.mo']
+- all: ['ThermofluidStream/HeatExchangers/**/*.mo']
+- all: ['ThermofluidStream/Undirected/HeatExchangers/**/*.mo']
 
 p::Interfaces:
 - all: ['ThermofluidStream/Interfaces/**/*.mo']
 - all: ['ThermofluidStream/Undirected/Interfaces/**/*.mo']
 
 p::Media:
-- all: ['ThermofluidStream/ThermofluidStream/Media/**/*.mo']
+- all: ['ThermofluidStream/Media/**/*.mo']
 
 p::Processes:
-- all: ['ThermofluidStream/ThermofluidStream/Processes/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/Processes/**/*.mo']
+- all: ['ThermofluidStream/Processes/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Processes/**/*.mo']
 
 d::Resources:
-- all: ['ThermofluidStream/ThermofluidStream/Resources/**/*']
+- all: ['ThermofluidStream/Resources/**/*']
 
 p::Sensors:
-- all: ['ThermofluidStream/ThermofluidStream/Sensors/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/Sensors/**/*.mo']
+- all: ['ThermofluidStream/Sensors/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Sensors/**/*.mo']
 
 p::Topology:
-- all: ['ThermofluidStream/ThermofluidStream/Topology/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/Topology/**/*.mo']
+- all: ['ThermofluidStream/Topology/**/*.mo']
+- all: ['ThermofluidStream/Undirected/Topology/**/*.mo']
 
 p::UsersGuide:
-- all: ['ThermofluidStream/ThermofluidStream/UsersGuide/**/*.mo']
+- all: ['ThermofluidStream/UsersGuide/**/*.mo']
 
 p::Utilities:
-- all: ['ThermofluidStream/ThermofluidStream/Utilities/**/*.mo']
+- all: ['ThermofluidStream/Utilities/**/*.mo']
 
 
