@@ -22,7 +22,7 @@ p::HeatExchangers:
 - all: ['ThermofluidStream/ThermofluidStream/Undirected/HeatExchangers/**/*.mo']
 
 p::Interfaces:
-- all: ['ThermofluidStream/ThermofluidStream/*/Interfaces/**/*.mo']
+- all: ['ThermofluidStream/ThermofluidStream/Interfaces/**/*.mo']
 # , 'ThermofluidStream/ThermofluidStream/Undirected/Interfaces/**/*.mo']
 
 p::Media:
