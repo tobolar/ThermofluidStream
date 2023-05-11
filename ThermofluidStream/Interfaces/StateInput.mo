@@ -34,7 +34,9 @@ connector StateInput "Thermodynamic state as connector"
         extent={{-10.0,60.0},{-10.0,85.0}},
         textString="%name")}),
     Documentation(info="<html>
-<p>Connector with one input signal of type Medium.Thermodynamic state. </p>
+<p>
+Connector with one input signal of type Medium.Thermodynamic state.
+</p>
 </html>"));
 
 end StateInput;
