@@ -1,14 +1,10 @@
-# Labeler attributes
-#   all: all changed files must match the list
-#   any: any of changed files match the list
-
 CI
-- any: ['.CI/**/*']
-- any: ['.github/**/*']
+  - any: ['.CI/**/*']
+  - any: ['.github/**/*']
 
 p::Boundaries:
-- all: ['ThermofluidStream/ThermofluidStream/Boundaries/**/*.mo']
-- all: ['ThermofluidStream/ThermofluidStream/Undirected/Boundaries/**/*.mo']
+  - all: ['ThermofluidStream/ThermofluidStream/Boundaries/**/*.mo']
+  - all: ['ThermofluidStream/ThermofluidStream/Undirected/Boundaries/**/*.mo']
 
 p::Examples:
 - all: ['ThermofluidStream/ThermofluidStream/Examples/**/*.mo']
@@ -51,5 +47,3 @@ p::UsersGuide:
 
 p::Utilities:
 - all: ['ThermofluidStream/ThermofluidStream/Utilities/**/*.mo']
-
-
