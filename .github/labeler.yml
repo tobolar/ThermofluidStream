@@ -1,4 +1,12 @@
-CI
+# Labeler attributes
+#   all: all changed files must match the list
+#   any: any of changed files match the list
+#
+# This file shall be called by .github/workflows/label.yml
+# 
+# For more information, see: https://github.com/actions/labeler
+
+CI:
   - any: ['.CI/**/*']
   - any: ['.github/**/*']
 
