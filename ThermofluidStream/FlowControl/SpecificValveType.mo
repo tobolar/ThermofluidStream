@@ -13,37 +13,37 @@ model SpecificValveType "Specific technical valve types"
     annotation(Dialog(group = "Valve parameters"));
   //Set valve data as parameter
   parameter Modelica.Units.SI.Diameter d_valve "Flow diameter"
-    annotation (Evaluate=true, Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
+    annotation (Dialog(group="Valve parameters", enable=(flowCoefficient== FlowCoeffType.flowDiameter)));
   //Reference Values
   parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
   parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
   parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
   parameter SI.MassFlowRate m_flow_ref_set "Reference mass flow rate"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+    annotation(Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
   Modelica.Units.SI.Area A_valve=0.25*Modelica.Constants.pi*d_valve^2 "Cross-sectional area";
   constant zetaValueRecord valveData;
 
-  SI.VolumeFlowRate V_flow_ref=
+  parameter SI.VolumeFlowRate V_flow_ref=
     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_US then (Cvs_US/1.1561)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.flowDiameter then A_valve*sqrt((2/zeta1)*(dp_ref/rho_ref))
-    else m_flow_ref_set/rho_ref "Reference volume flow";
+    else m_flow_ref_set/rho_ref "Reference volume flow" annotation(Evaluate=true);
 
   Real k_u_zeta(unit="1") "Kv/Kvs respecting zeta curve";
 
   Modelica.Blocks.Tables.CombiTable1Ds combiTable1D_zeta(
-  final smoothness = Modelica.Blocks.Types.Smoothness.MonotoneContinuousDerivative1,
-  final tableOnFile = false,
-  final table = valveData.zetaTable) "Interpolation of zeta datapoints";
+    final smoothness = Modelica.Blocks.Types.Smoothness.MonotoneContinuousDerivative1,
+    final tableOnFile = false,
+    final table = valveData.zetaTable) "Interpolation of zeta datapoints";
 
   Real zeta(unit="1", start = 0) "zeta value for pressure loss calculation";
-  Real zeta1(unit="1") = valveData.zetaTable[end,2] "zeta value for fully open valve";
+  parameter Real zeta1(unit="1") = valveData.zetaTable[end,2] "zeta value for fully open valve";
 
 equation
 

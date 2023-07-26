@@ -12,24 +12,52 @@ model BasicControlValve "Basic valve model with optional flow characteristics fo
 <p>Characteristic curve of the valve.</p>
 </html>"));
 
-  parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient" annotation(Dialog(group = "Valve parameters"));
+  parameter FlowCoeffType flowCoefficient = FlowCoeffType.Kvs "Select type of flow coefficient"
+    annotation(Dialog(group = "Valve parameters"));
   //Reference Values
-  parameter Real Kvs(unit = "m3/h")  "Kvs-value (metric) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Kvs)));
-  parameter Real Cvs_US "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
-  parameter Real Cvs_UK "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
-  parameter SI.MassFlowRate m_flow_ref_set "Set reference mass flow in kg/s"
-    annotation(Evaluate = true, Dialog(group = "Valve parameters",enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
+  parameter Real Kvs(unit = "m3/h", start=Cvs_US/1.1561)  "Kvs-value (metric) from data sheet (valve fully open)"
+    annotation (
+      Dialog(group = "Valve parameters", enable = (flowCoefficient==FlowCoeffType.Kvs)));
+  parameter Real Cvs_US(start=1.1561*Kvs) "Cvs-value (US [gal/min]) from data sheet (valve fully open)"
+    annotation (
+      Dialog(group = "Valve parameters", enable = (flowCoefficient ==FlowCoeffType.Cvs_US)));
+  parameter Real Cvs_UK(start=0.9626*Kvs) "Cvs-value (UK [gal/min]) from data sheet (valve fully open)"
+    annotation (
+      Dialog(group = "Valve parameters", enable = (flowCoefficient ==FlowCoeffType.Cvs_UK)));
+  parameter SI.MassFlowRate m_flow_ref_set(start=rho_ref*Kvs/secondsPerHour) "Set reference mass flow in kg/s"
+    annotation (
+      Dialog(group = "Valve parameters", enable = (flowCoefficient ==FlowCoeffType.m_flow_set)));
 
 protected
-  SI.VolumeFlowRate V_flow_ref=
+  parameter SI.VolumeFlowRate V_flow_ref=get_V_flow_ref(
+    flowCoefficient, Kvs, Cvs_US, Cvs_UK, m_flow_ref_set, rho_ref)
+    annotation(Evaluate = true);
+//   parameter SI.VolumeFlowRate V_flow_ref=
+//     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour else 0;
+//     elseif flowCoefficient == FlowCoeffType.Cvs_US then (Cvs_US/1.1561)/secondsPerHour
+//     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
+//     else m_flow_ref_set/rho_ref "Reference volume flow" annotation(Evaluate=true);
+
+protected
+  function get_V_flow_ref
+    input FlowCoeffType flowCoefficient;
+    input Real Kvs;
+    input Real Cvs_US;
+    input Real Cvs_UK;
+    input Real m_flow_ref_set;
+    input SI.Density rho_ref=1000 "Reference density";
+    output SI.VolumeFlowRate V_flow_ref;
+
+  protected
+    Real secondsPerHour(final unit="s/h") = 3600;
+
+  algorithm
+    V_flow_ref :=
     if flowCoefficient == FlowCoeffType.Kvs then Kvs/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_US then (Cvs_US/1.1561)/secondsPerHour
     elseif flowCoefficient == FlowCoeffType.Cvs_UK then (Cvs_UK/0.9626)/secondsPerHour
-    else m_flow_ref_set/rho_ref "Reference volume flow";
-
+    else m_flow_ref_set/rho_ref;
+  end get_V_flow_ref;
 equation
   //Calculate reference mass flow rate from reference volume flow rate
   m_flow_ref = V_flow_ref*rho_ref;
