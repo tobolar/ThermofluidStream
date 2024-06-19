@@ -70,8 +70,6 @@ equation
   h_out = h_in;
   Xi_out = Xi_in;
   annotation (
-    Dialog(enable = (material == ThermofluidStream.Processes.Internal.Material.other)),
-    choices(choice = ThermofluidStream.Processes.Internal.Material.concrete "Concrete ks=5mm", choice = ThermofluidStream.Processes.Internal.Material.wood "Wood ks=0.5mm", choice = ThermofluidStream.Processes.Internal.Material.castIron "Cast Iron ks=0.25mm", choice = ThermofluidStream.Processes.Internal.Material.galvanizedIron "Galvanized Iron ks=0.15mm", choice = ThermofluidStream.Processes.Internal.Material.steel "Steel ks=0.059mm", choice = ThermofluidStream.Processes.Internal.Material.drawnPipe "Drawn Pipe ks=0.0015mm"),
     Documentation(info="<html>
 <p>
 This curved pipe bend model computes the pressure loss of the fluid depending on the massflow or the massflow depending on a given pressure difference,
