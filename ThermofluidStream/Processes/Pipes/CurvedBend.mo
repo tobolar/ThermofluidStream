@@ -14,7 +14,7 @@ model CurvedBend "Pressure drop due to curved bend using Modelica.Fluid.Dissipat
   parameter ThermofluidStream.Processes.Internal.Material material = ThermofluidStream.Processes.Internal.Material.other "Material of pipe"
     annotation(Dialog(group="Roughness"));
   parameter SI.Length ks_input "Roughness of pipe"
-    annotation(Dialog(group="Roughness"),enable = material == ThermofluidStream.Processes.Internal.Material.other);
+    annotation(Dialog(group="Roughness",enable = material == ThermofluidStream.Processes.Internal.Material.other));
   //Initialization
   parameter StateSelect dpStateSelect = StateSelect.default "State select for dp"
     annotation(Dialog(tab = "Advanced"));
