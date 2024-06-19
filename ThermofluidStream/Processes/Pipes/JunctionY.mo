@@ -110,7 +110,7 @@ equation
     Line( origin={0,-40},
           points={{-80,0},{80,0}},
           color={0,140,72},
-          thickness=0.5)},                                                                          coordinateSystem(extent = {{-100, -100}, {100, 100}})),
+          thickness=0.5)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     Documentation(info="<html>
 <p>
 This component models a <strong>Y-shaped Junction</strong>. It computes the <strong>pressure loss</strong> of the fluid depending on the massflow rate or the massflow rate depending on a given pressure difference,
@@ -139,8 +139,8 @@ The different types of splitter geometry are defined as described in Idelchik (1
 </p>
 
 <ul>
-<li>Type I: Fb + Fs &gt; Fc and Fc = Fs \"straight pipe with attached pipe branch\"</li>
-<li> Type II: Fb + Fs = Fc \"two smaller branches merging into a straight pipe, whereby the total inlet and outlet area remains the same\"</li>
+  <li>Type I: Fb + Fs &gt; Fc and Fc = Fs \"straight pipe with attached pipe branch\"</li>
+  <li> Type II: Fb + Fs = Fc \"two smaller branches merging into a straight pipe, whereby the total inlet and outlet area remains the same\"</li>
 </ul>
 
 <p>
