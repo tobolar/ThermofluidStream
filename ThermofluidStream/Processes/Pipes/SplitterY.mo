@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model SplitterY "Pressure drop of an Y-shaped splitter"
 
-  extends Internal.Interfaces.partialSplitterY;
+  extends Internal.Interfaces.PartialSplitterY;
 
   // Geometry
   parameter SI.Length d_in "(Common) inlet diameter"
@@ -113,7 +113,7 @@ This model is a <strong>splitter</strong> component only. Therfore flows <strong
 </p>
 
 <p>
-The Y-Splitter component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialSplitterY\">partialSplitterY</a> implementing the common flow balances 
+The Y-Splitter component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.PartialSplitterY\">PartialSplitterY</a> implementing the common flow balances 
 for fluid splitting components. For the pressure loss calculation the functions 
 <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType1_DP\">dp_SplitterWyeType1_DP</a> and 
 <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Splitter.dp_SplitterWyeType2_DP\">dp_SplitterWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.

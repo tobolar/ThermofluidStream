@@ -1,7 +1,7 @@
 within ThermofluidStream.Processes.Pipes;
 model JunctionY "Pressure drop of an Y-shaped junction"
 
-  extends Internal.Interfaces.partialJunctionY;
+  extends Internal.Interfaces.PartialJunctionY;
 
   // Geometry
   parameter SI.Length d_straight "Straight inlet diameter"
@@ -122,7 +122,7 @@ If two pressure boundaries are used, be careful to prevent back flow into the co
 </p>
 
 <p>
-The Y-Junction component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.partialJunctionY\">partialJunctionY</a> implementing the common flow balances 
+The Y-Junction component is extending the partial model <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.Interfaces.PartialJunctionY\">PartialJunctionY</a> implementing the common flow balances 
 for fluid merging components. For the pressure loss calculation the functions <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_SplitterWyeType1_DP</a>
 and <a href=\"modelica://ThermofluidStream.Processes.Pipes.Internal.BaseClasses.PressureLoss.Junction.dp_JunctionWyeType1_DP\">dp_JunctionWyeType2_DP</a> are used <strong>depending on the users geometry input</strong>.
 See their documentation for a detailed description on the pressure loss calculation an figuers containing pressure loss coefficieint charts.

@@ -1,5 +1,5 @@
 within ThermofluidStream.Processes.Pipes.Internal.Interfaces;
-partial model partialSplitterY "Duplicate of SplitterM considering dynamic effects"
+partial model PartialSplitterY "Duplicate of SplitterM considering dynamic effects"
 
   extends ThermofluidStream.Utilities.DropOfCommonsPlus;
 
@@ -93,4 +93,4 @@ This partial model is base for Y-shaped splitter models. For implementation of o
 <img src=\"modelica://ThermofluidStream/Resources/Doku/Fluid_HTWG/HTWG_en_Markenzeichen_klein_pos_1C.png\" alt=\"HTWG Konstanz\" width=\"350\" height=\"100\">
 </p>
 </html>"));
-end partialSplitterY;
+end PartialSplitterY;
